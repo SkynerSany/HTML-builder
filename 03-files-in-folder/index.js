@@ -1,6 +1,6 @@
-const fs = require('fs');
+// const { stat } = require('fs');
 const path = require('path');
-const { readdir } = require('node:fs/promises');
+const { readdir, stat } = require('node:fs/promises');
 
 async function getFiles() {
   const files = await readdir(path.join(__dirname, 'secret-folder'), { withFileTypes: true });
@@ -8,7 +8,7 @@ async function getFiles() {
   for (const file of files) {
     const fileLink = path.join(__dirname, 'secret-folder', file.name);
     
-    const fileLog = fs.statSync(fileLink);
+    const fileLog = await stat(fileLink);
     const fileType = path.extname(fileLink);
     const fileName = path.basename(fileLink, fileType);
 
