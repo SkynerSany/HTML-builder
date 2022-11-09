@@ -42,7 +42,7 @@ async function bundle(base, dist, type) {
   for (const file of files) {
     const fileLink = path.join(baseFolder, file.name);
 
-    if (path.extname(fileLink) !== type) break;
+    if (path.extname(fileLink) !== type) continue;
     
     const fileData = await readFile(fileLink);
     const fileType = path.extname(fileLink);
