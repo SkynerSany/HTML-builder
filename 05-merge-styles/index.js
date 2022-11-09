@@ -11,8 +11,8 @@ async function copyFolder() {
   for (const file of files) {
     const fileLink = path.join(baseFolder, file.name);
 
-    if (path.extname(fileLink) !== '.css') break;
-    
+    if (path.extname(fileLink) !== '.css') continue;
+
     const fileData = readFile(fileLink);
     const data = await fileData;
     styles.push(data.toString());
